@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartboard Interface - Classroom Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Right Sidebar - Icon Panel -->
+    <div class="sidebar-right">
+        <button class="icon-btn" id="settingsBtn" title="Settings" aria-label="Settings">
+            <span class="icon">⚙️</span>
+            <span class="label">Settings</span>
+        </button>
+        <button class="icon-btn" id="backgroundBtn" title="Background" aria-label="Change Background">
+            <span class="icon">🎨</span>
+            <span class="label">Background</span>
+        </button>
+        <button class="icon-btn" id="musicBtn" title="Music" aria-label="Upload Music">
+            <span class="icon">🎵</span>
+            <span class="label">Music</span>
+        </button>
+        <button class="icon-btn" id="videoBtn" title="Videos" aria-label="Upload Videos">
+            <span class="icon">🎬</span>
+            <span class="label">Videos</span>
+        </button>
+        <button class="icon-btn" id="quietBtn" title="Quiet Time" aria-label="Noise Meter">
+            <span class="icon">🔇</span>
+            <span class="label">Quiet</span>
+        </button>
+        <button class="icon-btn" id="timerBtn" title="Timer" aria-label="Timer">
+            <span class="icon">⏱️</span>
+            <span class="label">Timer</span>
+        </button>
+        <button class="icon-btn" id="volumeBtn" title="Volume" aria-label="Volume Control">
+            <span class="icon">🔊</span>
+            <span class="label">Volume</span>
+        </button>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Center Content Display -->
+        <div id="contentArea" class="content-area">
+            <div class="welcome-message">
+                <h1>Welcome to Smartboard</h1>
+                <p>Select a lesson flow item below to get started</p>
+            </div>
+        </div>
+
+        <!-- Center-Bottom Lesson Flow Panel -->
+        <div class="lesson-flow-panel">
+            <div class="lesson-flow-container">
+                <button class="lesson-item" data-lesson="warmup" title="Warm-up Activity">
+                    <span class="lesson-icon">🔥</span>
+                    <span class="lesson-name">Warm-up</span>
+                </button>
+                <div class="flow-connector"></div>
+                <button class="lesson-item" data-lesson="review" title="Review">
+                    <span class="lesson-icon">📋</span>
+                    <span class="lesson-name">Review</span>
+                </button>
+                <div class="flow-connector"></div>
+                <button class="lesson-item" data-lesson="prior" title="Prior Knowledge">
+                    <span class="lesson-icon">💭</span>
+                    <span class="lesson-name">Prior Knowledge</span>
+                </button>
+                <div class="flow-connector"></div>
+                <button class="lesson-item" data-lesson="lesson" title="Lesson of the Day">
+                    <span class="lesson-icon">📚</span>
+                    <span class="lesson-name">Lesson</span>
+                </button>
+                <div class="flow-connector"></div>
+                <button class="lesson-item" data-lesson="practice" title="Practice">
+                    <span class="lesson-icon">✏️</span>
+                    <span class="lesson-name">Practice</span>
+                </button>
+                <div class="flow-connector"></div>
+                <button class="lesson-item" data-lesson="assessment" title="Assessment">
+                    <span class="lesson-icon">✅</span>
+                    <span class="lesson-name">Assessment</span>
+                </button>
+                <div class="flow-connector"></div>
+                <button class="lesson-item" data-lesson="wrapup" title="Wrap Up">
+                    <span class="lesson-icon">🎉</span>
+                    <span class="lesson-name">Wrap Up</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Panels -->
+    
+    <!-- Settings Panel -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content settings-panel">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>Lesson Flow Links</h3>
+                    <div id="lessonLinksList" class="links-list"></div>
+                    <button id="addLinkBtn" class="btn btn-primary">+ Add Link</button>
+                </div>
+                <div class="settings-section">
+                    <h3>General Settings</h3>
+                    <label class="setting-item">
+                        <input type="checkbox" id="fullscreenToggle">
+                        Enable Fullscreen Mode
+                    </label>
+                    <label class="setting-item">
+                        <input type="checkbox" id="soundToggle" checked>
+                        Enable Sound Effects
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Panel -->
+    <div id="backgroundModal" class="modal">
+        <div class="modal-content background-panel">
+            <div class="modal-header">
+                <h2>Background & Theme</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>Color Themes</h3>
+                    <div class="theme-selector">
+                        <button class="theme-btn" data-theme="default" style="background: linear-gradient(135deg, #FFB6D9, #D4AEDD);" title="Default Pastel">
+                            <span>Default</span>
+                        </button>
+                        <button class="theme-btn" data-theme="ocean" style="background: linear-gradient(135deg, #B4E7FF, #87CEEB);" title="Ocean">
+                            <span>Ocean</span>
+                        </button>
+                        <button class="theme-btn" data-theme="forest" style="background: linear-gradient(135deg, #B4FFB4, #90EE90);" title="Forest">
+                            <span>Forest</span>
+                        </button>
+                        <button class="theme-btn" data-theme="sunset" style="background: linear-gradient(135deg, #FFD4A3, #FFB6D9);" title="Sunset">
+                            <span>Sunset</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>Background Image</h3>
+                    <input type="file" id="backgroundUpload" accept="image/*" class="file-input">
+                    <button id="uploadBgBtn" class="btn btn-primary">Upload Background</button>
+                    <button id="removeBgBtn" class="btn btn-secondary">Remove Background</button>
+                </div>
+                <div id="bgPreview" class="bg-preview"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Panel -->
+    <div id="musicModal" class="modal">
+        <div class="modal-content music-panel">
+            <div class="modal-header">
+                <h2>Music Library</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>Upload Music</h3>
+                    <input type="file" id="musicUpload" accept="audio/*" class="file-input">
+                    <button id="uploadMusicBtn" class="btn btn-primary">Upload Music File</button>
+                </div>
+                <div class="settings-section">
+                    <h3>Your Music Files</h3>
+                    <div id="musicList" class="file-list"></div>
+                </div>
+                <div class="settings-section">
+                    <h3>Player</h3>
+                    <audio id="audioPlayer" controls style="width: 100%;"></audio>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Panel -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content video-panel">
+            <div class="modal-header">
+                <h2>Video Library</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>Upload Video</h3>
+                    <input type="file" id="videoUpload" accept="video/*" class="file-input">
+                    <button id="uploadVideoBtn" class="btn btn-primary">Upload Video File</button>
+                </div>
+                <div class="settings-section">
+                    <h3>Your Video Files</h3>
+                    <div id="videoList" class="file-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiet Time Panel -->
+    <div id="quietModal" class="modal">
+        <div class="modal-content quiet-panel">
+            <div class="modal-header">
+                <h2>Quiet Time</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe 
+                    src="https://noise-meter-mio.classroomzen.com/" 
+                    class="quiet-iframe"
+                    title="Noise Meter">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timer Panel -->
+    <div id="timerModal" class="modal">
+        <div class="modal-content timer-panel">
+            <div class="modal-header">
+                <h2>Timer</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="timer-display">
+                    <div id="timerValue" class="timer-value">00:00</div>
+                </div>
+                <div class="timer-inputs">
+                    <div class="input-group">
+                        <label for="timerMinutes">Minutes:</label>
+                        <input type="number" id="timerMinutes" min="0" max="59" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="timerSeconds">Seconds:</label>
+                        <input type="number" id="timerSeconds" min="0" max="59" value="0">
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <button id="timerStart" class="btn btn-primary">Start</button>
+                    <button id="timerStop" class="btn btn-secondary" disabled>Stop</button>
+                    <button id="timerReset" class="btn btn-secondary">Reset</button>
+                </div>
+                <div id="bombAnimation" class="bomb-animation hidden">
+                    <div class="bomb">💣</div>
+                    <div class="explosion">💥</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Volume Panel -->
+    <div id="volumeModal" class="modal">
+        <div class="modal-content volume-panel">
+            <div class="modal-header">
+                <h2>Volume Control</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="volume-control">
+                    <label for="volumeSlider">Audio Volume:</label>
+                    <div class="slider-container">
+                        <span class="volume-icon">🔇</span>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="70" class="volume-slider">
+                        <span class="volume-icon">🔊</span>
+                    </div>
+                    <div class="volume-percent" id="volumePercent">70%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
